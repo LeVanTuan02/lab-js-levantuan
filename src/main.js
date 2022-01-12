@@ -11,6 +11,9 @@ import DetailNewsPage from "./pages/detailNews";
 import SigninPage from "./pages/signin";
 import SignupPage from "./pages/signup";
 import ForgotPassPage from "./pages/forgotPass";
+import AdminNewsPage from "./pages/admin/news";
+import AdminNewsAddPage from "./pages/admin/newsAdd";
+import AdminNewsEditPage from "./pages/admin/newsEdit";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -63,6 +66,16 @@ router.on({
     "/forgot": () => {
         changeTitle("Khôi phục tài khoản");
         print(ForgotPassPage.render());
+    },
+    "/admin/news": () => {
+        print(AdminNewsPage.render());
+    },
+    "/admin/news/add": () => {
+        print(AdminNewsAddPage.render());
+    },
+    "/admin/news/:id/edit": ({ data }) => {
+        const { id } = data;
+        print(AdminNewsEditPage.render(+id));
     },
 });
 

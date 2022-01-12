@@ -14,10 +14,10 @@ const RelatedPostList = {
 
                     <div>
                         <h3>
-                            <a href="/news/${post.id}" class="text-lg leading-6 block py-2 text-amber-700 font-medium transition hover:underline">${post.title}</a>
+                            <a href="/news/${post.id}" class="text-lg leading-6 block py-2 text-amber-700 font-medium transition hover:underline">${post.title.substr(0, 50)}...</a>
                         </h3>
                         <p class="text-justify pb-2">
-                            ${post.description}
+                            ${post.description.substr(0, 100)}...
                         </p>
                     </div>
                 </div>
