@@ -13,9 +13,6 @@ const AdminNewsList = {
                         Title
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Description
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -31,9 +28,6 @@ const AdminNewsList = {
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             <a href="/news/${post.id}" class="hover:underline">${post.title.substr(0, 50)}...</a>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            ${post.description.substr(0, 50)}...
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             ${post.status === 0 ? `
