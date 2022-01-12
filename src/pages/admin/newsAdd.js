@@ -25,8 +25,8 @@ const AdminNewsAddPage = {
                                     </div>
         
                                     <div class="col-span-6 md:col-span-3">
-                                        <label for="country" class="block text-sm font-medium text-gray-700">Danh mục bài viết</label>
-                                        <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <label for="category" class="block text-sm font-medium text-gray-700">Danh mục bài viết</label>
+                                        <select id="category" name="category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             <option value="">-- Chọn danh mục bài viết --</option>
                                             ${categoryList.map((cate) => `
                                                 <option value="${cate.id}">${cate.name}</option>
@@ -35,8 +35,8 @@ const AdminNewsAddPage = {
                                     </div>
         
                                     <div class="col-span-6 md:col-span-3">
-                                        <label for="country" class="block text-sm font-medium text-gray-700">Trạng thái</label>
-                                        <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <label for="status" class="block text-sm font-medium text-gray-700">Trạng thái</label>
+                                        <select id="status" name="status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             <option value="">-- Chọn trạng thái bài viết --</option>
                                             <option value="0" selected>Ẩn</option>
                                             <option value="1">Hiển thị</option>
