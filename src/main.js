@@ -14,6 +14,7 @@ import ForgotPassPage from "./pages/forgotPass";
 import AdminNewsPage from "./pages/admin/news";
 import AdminNewsAddPage from "./pages/admin/newsAdd";
 import AdminNewsEditPage from "./pages/admin/newsEdit";
+import AdminDashboardPage from "./pages/admin/dashboard";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -82,6 +83,9 @@ router.on({
         changeTitle("Admin | Edit News");
         const { id } = data;
         print(AdminNewsEditPage.render(+id));
+    },
+    "/admin/dashboard": () => {
+        print(AdminDashboardPage.render());
     },
 });
 
