@@ -7,14 +7,14 @@ const NewsPage = {
             const cateData = categoryList.find((cate) => cate.id === cateId);
             return /* html */`
             <h1 class="font-bold text-3xl my-9 uppercase text-center">Tin tức Poly - ${cateData.name}</h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
                     ${PostByCate.render(cateId)}
                 </div>
             `;
         }
         return /* html */`
             <h1 class="font-bold text-3xl my-9 uppercase text-center">Tin tức Poly</h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
                     ${postList.map((post) => `
                         <div class="border border-gray-300 p-3 transition duration-300 linear hover:border-red-400">
                             <div class="overflow-hidden">

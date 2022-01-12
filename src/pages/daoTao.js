@@ -1,7 +1,7 @@
 const DaoTaoPage = {
     render() {
         return `
-        <section>
+        <section class="mb-5">
             <h1 class="text-3xl font-bold uppercase text-center my-9">Thiết kế website</h1>
 
             <img class="w-full" src="https://caodang.fpt.edu.vn/wp-content/uploads/TKW-3.png" alt="">

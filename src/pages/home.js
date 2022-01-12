@@ -16,7 +16,7 @@ const HomePage = {
             </div>
         </section>
 
-        <section>
+        <section class="mb-5">
             <h2>
                 <a href="/category/2" class="text-2xl font-bold uppercase my-4 block text-blue-900">Hoạt động sinh viên</a>
             </h2>

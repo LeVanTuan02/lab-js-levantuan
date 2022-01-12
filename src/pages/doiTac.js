@@ -1,7 +1,7 @@
 const DoiTacPage = {
     render() {
         return `
-        <section>
+        <section class="mb-5">
             <h1 class="font-bold text-3xl my-9 uppercase text-center">Đối tác</h1>
 
             <table class="w-full table-fixed text-sm">
