@@ -37,6 +37,7 @@ router.on({
         print(TuyenSinhPage.render());
     },
     "/chuong-trinh-dao-tao": () => {
+        changeTitle("Chương trình đào tạo");
         print(DaoTaoPage.render());
     },
     "/doi-tac": () => {
@@ -48,10 +49,12 @@ router.on({
         print(NewsPage.render());
     },
     "/news/:id": ({ data }) => {
+        changeTitle("Bài viết");
         const { id } = data;
         print(DetailNewsPage.render(+id));
     },
     "/category/:id": ({ data }) => {
+        changeTitle("Tin tức");
         const { id } = data;
         print(NewsPage.render(false, +id));
     },
@@ -68,12 +71,15 @@ router.on({
         print(ForgotPassPage.render());
     },
     "/admin/news": () => {
+        changeTitle("Admin | News");
         print(AdminNewsPage.render());
     },
     "/admin/news/add": () => {
+        changeTitle("Admin | Add News");
         print(AdminNewsAddPage.render());
     },
     "/admin/news/:id/edit": ({ data }) => {
+        changeTitle("Admin | Edit News");
         const { id } = data;
         print(AdminNewsEditPage.render(+id));
     },
