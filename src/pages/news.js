@@ -26,7 +26,7 @@ const NewsPage = {
                                     <a href="/news/${post.id}" class="text-lg leading-6 block py-2 text-amber-700 font-medium transition hover:underline">${post.title}</a>
                                 </h3>
                                 <p class="text-justify pb-2">
-                                    ${post.description}
+                                    ${post.description.substr(0, 220)}...
                                 </p>
                             </div>
                         </div>
