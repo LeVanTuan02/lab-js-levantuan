@@ -15,7 +15,7 @@ const DetailNewsPage = {
         </section>
 
         <section class="grid grid-cols-12 mt-3 mb-5">
-            <div class="col-span-9 px-4">
+            <div class="col-span-12 lg:col-span-9 px-4">
                 <div class="border-b pb-5 border-dashed">
                     <img class="h-72 mx-auto" src="${result.image}" alt="">
                     <p class="leading-relaxed mt-3 text-justify">
@@ -28,7 +28,7 @@ const DetailNewsPage = {
                     ${RelatedPostList.render(cateData.id, id)}
                 </div>
             </div>
-            <aside class="col-span-3 border-l px-4">
+            <aside class="hidden lg:block col-span-3 border-l px-4">
                 ${SidebarNews.render(cateData.id)}
             </aside>
         </section>
