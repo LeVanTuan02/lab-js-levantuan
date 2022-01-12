@@ -14,7 +14,7 @@ const DetailNewsPage = {
             <span class="block mb-4 text-sm">POSTED ON 29/12/2021 BY ADMIN</span>
         </section>
 
-        <section class="grid grid-cols-12 mt-3">
+        <section class="grid grid-cols-12 mt-3 mb-5">
             <div class="col-span-9 px-4">
                 <div class="border-b pb-5 border-dashed">
                     <img class="h-72 mx-auto" src="${result.image}" alt="">
