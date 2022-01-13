@@ -1,7 +1,7 @@
 const AdminSidebar = {
     render() {
         return /* html */ `
-        <aside class="hidden lg:block col-span-2 h-[calc(100vh-200px)] border-0 lg:border-x">
+        <aside class="hidden lg:block col-span-2 min-h-[calc(100vh-200px)] border-0 lg:border-x">
             <header class="font-bold px-2 text-xl py-3 border-b">FPOLY</header>
 
             <ul>
