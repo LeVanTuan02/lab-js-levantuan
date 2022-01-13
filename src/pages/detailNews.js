@@ -5,13 +5,16 @@ import { postList, categoryList } from "../data";
 const DetailNewsPage = {
     render(id) {
         const result = postList.find((post) => post.id === id);
+        const createdAt = new Date(result.createdAt);
+        const createdFormat = `${createdAt.getDate()}/${createdAt.getMonth() + 1}/${createdAt.getFullYear()}`;
+
         // thông tin danh mục
         const cateData = categoryList.find((category) => category.id === result.cate_id);
         return /* html */ `
         <section class="text-center mt-7 border-b border-dashed">
             <h4 class="uppercase text-sm font-semibold">${cateData.name}</h4>
             <h1 class="uppercase font-bold text-xl my-2">${result.title}</h1>
-            <span class="block mb-4 text-sm">POSTED ON 29/12/2021 BY ADMIN</span>
+            <span class="block mb-4 text-sm">POSTED ON ${createdFormat} BY ADMIN</span>
         </section>
 
         <section class="grid grid-cols-12 mt-3 mb-5">
