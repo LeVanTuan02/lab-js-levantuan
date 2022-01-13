@@ -1,4 +1,4 @@
-import { postList } from "../data";
+import { postList } from "../../data";
 
 const LatestPosts = {
     render() {

@@ -1,4 +1,4 @@
-import { categoryList } from "../data";
+import { categoryList } from "../../data";
 import LatestPosts from "./latestPosts";
 
 const SidebarNews = {

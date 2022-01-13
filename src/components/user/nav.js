@@ -1,4 +1,4 @@
-import { menuList } from "../data";
+import { menuList } from "../../data";
 
 const Nav = {
     render() {

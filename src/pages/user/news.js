@@ -1,19 +1,33 @@
-import PostByCate from "../components/postByCate";
-import { categoryList, postList } from "../data";
+import Header from "../../components/user/header";
+import Footer from "../../components/user/footer";
+import PostByCate from "../../components/user/postByCate";
+import { categoryList, postList } from "../../data";
 
 const NewsPage = {
     render(showAll = true, cateId = "") {
         if (!showAll) {
+            // bài viết theo danh mục
             const cateData = categoryList.find((cate) => cate.id === cateId);
+
             return /* html */`
-            <h1 class="font-bold text-3xl my-9 uppercase text-center">Tin tức Poly - ${cateData.name}</h1>
+            ${Header.render()}
+
+            <main class="container max-w-7xl mx-auto px-2">
+                <h1 class="font-bold text-3xl my-9 uppercase text-center">Tin tức Poly - ${cateData.name}</h1>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
                     ${PostByCate.render(cateId)}
                 </div>
+            </main>
+
+            ${Footer.render()}
             `;
         }
+
         return /* html */`
-            <h1 class="font-bold text-3xl my-9 uppercase text-center">Tin tức Poly</h1>
+            ${Header.render()}
+            
+            <main class="container max-w-7xl mx-auto px-2">
+                <h1 class="font-bold text-3xl my-9 uppercase text-center">Tin tức Poly</h1>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
                     ${postList.map((post) => `
                         <div class="border border-gray-300 p-3 transition duration-300 linear hover:border-red-400">
@@ -32,6 +46,9 @@ const NewsPage = {
                         </div>
                         `).join("")}
                 </div>
+            </main>
+
+            ${Footer.render()}
             `;
     },
 };

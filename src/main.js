@@ -1,27 +1,23 @@
 import Navigo from "navigo";
-import Header from "./components/header";
-import Footer from "./components/footer";
-import NotFound from "./pages/notFound";
-import HomePage from "./pages/home";
-import TuyenSinhPage from "./pages/tuyenSinh";
-import DaoTaoPage from "./pages/daoTao";
-import DoiTacPage from "./pages/doiTac";
-import NewsPage from "./pages/news";
-import DetailNewsPage from "./pages/detailNews";
-import SigninPage from "./pages/signin";
-import SignupPage from "./pages/signup";
-import ForgotPassPage from "./pages/forgotPass";
+import NotFound from "./pages/user/notFound";
+import HomePage from "./pages/user/home";
+import TuyenSinhPage from "./pages/user/tuyenSinh";
+import DaoTaoPage from "./pages/user/daoTao";
+import DoiTacPage from "./pages/user/doiTac";
+import NewsPage from "./pages/user/news";
+import DetailNewsPage from "./pages/user/detailNews";
+import SigninPage from "./pages/auth/signin";
+import SignupPage from "./pages/auth/signup";
+import ForgotPassPage from "./pages/auth/forgotPass";
 import AdminNewsPage from "./pages/admin/news";
-import AdminNewsAddPage from "./pages/admin/newsAdd";
-import AdminNewsEditPage from "./pages/admin/newsEdit";
+import AdminNewsAddPage from "./pages/admin/news/add";
+import AdminNewsEditPage from "./pages/admin/news/edit";
 import AdminDashboardPage from "./pages/admin/dashboard";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
 const print = (content) => {
-    document.querySelector("#header").innerHTML = Header.render();
     document.querySelector("#app").innerHTML = content;
-    document.querySelector("#footer").innerHTML = Footer.render();
 };
 
 const changeTitle = (title) => {
@@ -85,6 +81,7 @@ router.on({
         print(AdminNewsEditPage.render(+id));
     },
     "/admin/dashboard": () => {
+        changeTitle("Admin | Dashboard");
         print(AdminDashboardPage.render());
     },
 });
