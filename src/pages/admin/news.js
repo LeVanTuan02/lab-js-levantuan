@@ -7,7 +7,7 @@ const AdminNewsPage = {
         <div class="grid grid-cols-12">
             ${AdminSidebar.render()}
 
-            <div class="col-span-12 lg:col-span-10 px-5 border-x lg:border-r m-h-[calc(100vh-200px)]">
+            <div class="col-span-12 lg:col-span-10 px-5 border-x lg:border-r min-h-[calc(100vh-200px)] pb-5">
                 <h1 class="font-bold text-2xl text-center uppercase my-8">Danh sách bài viết</h1>
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
