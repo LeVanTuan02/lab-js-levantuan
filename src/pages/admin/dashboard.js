@@ -1,4 +1,5 @@
 import AdminDashboardCard from "../../components/admin/dashboardCard";
+import DashboardOrder from "../../components/admin/dashboardOrder";
 import AdminNav from "../../components/admin/nav";
 
 const AdminDashboardPage = {
@@ -20,6 +21,10 @@ const AdminDashboardPage = {
                     <div class="px-4 py-6 sm:px-0">
                         <section class="grid grid-cols-2 lg:grid-cols-4 gap-3">
                             ${AdminDashboardCard.render()}
+                        </section>
+
+                        <section>
+                            ${DashboardOrder.render()}
                         </section>
                     </div>
                 </div>
