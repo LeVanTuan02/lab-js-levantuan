@@ -12,6 +12,9 @@ const Nav = {
                 <li>
                     <a href="/admin/dashboard" class="block p-3 text-white transition hover:underline">Admin</a>
                 </li>
+                <li>
+                    <a href="/signin" class="block p-3 text-white transition hover:underline">Đăng nhập</a>
+                </li>
         </ul>
         `;
     },
