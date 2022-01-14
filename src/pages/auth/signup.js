@@ -28,8 +28,16 @@ const SignupPage = {
                                 <input id="email-address" name="email" type="email" autocomplete="email" required class="rounded-md border shadow-sm appearance-none block w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Nhập email">
                             </div>
                             <div class="mt-4">
+                                <label for="phone" class="font-medium mb-1 block">Số điện thoại</label>
+                                <input id="phone" name="phone" type="text" required class="rounded-md border shadow-sm appearance-none block w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Nhập số điện thoại">
+                            </div>
+                            <div class="mt-4">
                                 <label for="password" class="font-medium mb-1 block">Mật khẩu</label>
                                 <input id="password" name="password" type="password" autocomplete="current-password" required class="rounded-md border shadow-sm appearance-none block w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Mật khẩu">
+                            </div>
+                            <div class="mt-4">
+                                <label for="confirm" class="font-medium mb-1 block">Xác nhận mật khẩu</label>
+                                <input id="confirm" name="confirm" type="password" required class="rounded-md border shadow-sm appearance-none block w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Xác nhận mật khẩu">
                             </div>
                         </div>
                 
