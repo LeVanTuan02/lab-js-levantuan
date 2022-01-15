@@ -17,7 +17,7 @@ import AdminDashboardPage from "./pages/admin/dashboard";
 const router = new Navigo("/", { linksSelector: "a" });
 
 const print = (content) => {
-    document.querySelector("#app").innerHTML = content;
+    document.querySelector("#app").innerHTML = content.render();
 };
 
 const changeTitle = (title) => {
@@ -27,23 +27,23 @@ const changeTitle = (title) => {
 router.on({
     "/": () => {
         changeTitle("Cao đẳng thực hành FPT Polytechnic");
-        print(HomePage.render());
+        print(HomePage);
     },
     "/tuyen-sinh": () => {
         changeTitle("Tuyển sinh 2022");
-        print(TuyenSinhPage.render());
+        print(TuyenSinhPage);
     },
     "/chuong-trinh-dao-tao": () => {
         changeTitle("Chương trình đào tạo");
-        print(DaoTaoPage.render());
+        print(DaoTaoPage);
     },
     "/doi-tac": () => {
         changeTitle("Đối tác");
-        print(DoiTacPage.render());
+        print(DoiTacPage);
     },
     "/news": () => {
         changeTitle("Tin tức");
-        print(NewsPage.render());
+        print(NewsPage);
     },
     "/news/:id": ({ data }) => {
         changeTitle("Bài viết");
@@ -57,23 +57,23 @@ router.on({
     },
     "/signin": () => {
         changeTitle("Đăng nhập");
-        print(SigninPage.render());
+        print(SigninPage);
     },
     "/signup": () => {
         changeTitle("Đăng ký");
-        print(SignupPage.render());
+        print(SignupPage);
     },
     "/forgot": () => {
         changeTitle("Khôi phục tài khoản");
-        print(ForgotPassPage.render());
+        print(ForgotPassPage);
     },
     "/admin/news": () => {
         changeTitle("Admin | News");
-        print(AdminNewsPage.render());
+        print(AdminNewsPage);
     },
     "/admin/news/add": () => {
         changeTitle("Admin | Add News");
-        print(AdminNewsAddPage.render());
+        print(AdminNewsAddPage);
     },
     "/admin/news/:id/edit": ({ data }) => {
         changeTitle("Admin | Edit News");
@@ -82,13 +82,13 @@ router.on({
     },
     "/admin/dashboard": () => {
         changeTitle("Admin | Dashboard");
-        print(AdminDashboardPage.render());
+        print(AdminDashboardPage);
     },
 });
 
 router.notFound(() => {
     changeTitle("Awww... Trang này không tồn tại :(");
-    print(NotFound.render());
+    print(NotFound);
 });
 
 router.resolve();
