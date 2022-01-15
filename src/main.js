@@ -16,8 +16,10 @@ import AdminDashboardPage from "./pages/admin/dashboard";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = (content) => {
-    document.querySelector("#app").innerHTML = content.render();
+const print = (content, id) => {
+    document.querySelector("#app").innerHTML = content.render(id);
+
+    if (content.afterRender) content.afterRender();
 };
 
 const changeTitle = (title) => {
@@ -48,7 +50,7 @@ router.on({
     "/news/:id": ({ data }) => {
         changeTitle("Bài viết");
         const { id } = data;
-        print(DetailNewsPage.render(+id));
+        print(DetailNewsPage, +id);
     },
     "/category/:id": ({ data }) => {
         changeTitle("Tin tức");

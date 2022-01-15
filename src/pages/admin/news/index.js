@@ -42,6 +42,15 @@ const AdminNewsPage = {
         </div>
         `;
     },
+    afterRender() {
+        const btnRemove = document.querySelectorAll(".btn-remove");
+        btnRemove.forEach((btn) => {
+            const { id } = btn.dataset;
+            btn.addEventListener("click", (e) => {
+                e.target.closest("tr").remove();
+            });
+        });
+    },
 };
 
 export default AdminNewsPage;
