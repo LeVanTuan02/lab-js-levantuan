@@ -1,3 +1,4 @@
+import axios from "axios";
 import AdminNav from "../../../components/admin/nav";
 import { categoryList } from "../../../data";
 
@@ -24,18 +25,18 @@ const AdminNewsAddPage = {
             <main>
                 <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                     <div class="px-4 py-6 sm:px-0">
-                        <form action="#" method="POST">
+                        <form action="" method="POST" id="post__form-add">
                             <div class="shadow overflow-hidden sm:rounded-md">
                                 <div class="px-4 py-5 bg-white sm:p-6">
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6">
                                             <label for="title" class="block text-sm font-medium text-gray-700">Tiêu đề bài viết</label>
-                                            <input type="text" name="title" id="title" class="py-2 px-3 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Nhập tiêu đề bài viết">
+                                            <input type="text" name="title" id="post__form-title" class="py-2 px-3 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Nhập tiêu đề bài viết">
                                         </div>
             
                                         <div class="col-span-6">
                                             <label for="description" class="block text-sm font-medium text-gray-700">Mô tả</label>
-                                            <textarea id="description" name="description" rows="3" class="py-2 px-3 focus:outline-none shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Nhập mô tả bài viết"></textarea>
+                                            <textarea id="post__form-desc" name="description" rows="3" class="py-2 px-3 focus:outline-none shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Nhập mô tả bài viết"></textarea>
                                         </div>
             
                                         <div class="col-span-6 md:col-span-3">
@@ -89,6 +90,27 @@ const AdminNewsAddPage = {
             </main>
         </div>
         `;
+    },
+    afterRender() {
+        const formAdd = document.querySelector("#post__form-add");
+        formAdd.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const post = {
+                title: document.querySelector("#post__form-title").value,
+                img: "http://placeimg.com/640/480/business",
+                desc: document.querySelector("#post__form-desc").value,
+            };
+
+            axios.post("http://localhost:3001/news", post);
+
+            // fetch("http://localhost:3001/news", {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify(post),
+            // });
+        });
     },
 };
 

@@ -16,10 +16,10 @@ import AdminDashboardPage from "./pages/admin/dashboard";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = (content, id) => {
-    document.querySelector("#app").innerHTML = content.render(id);
+const print = async (content, id) => {
+    document.querySelector("#app").innerHTML = await content.render(id);
 
-    if (content.afterRender) content.afterRender();
+    if (content.afterRender) await content.afterRender();
 };
 
 const changeTitle = (title) => {
@@ -94,3 +94,32 @@ router.notFound(() => {
 });
 
 router.resolve();
+
+// const apiUrl = "https://5e79b4b817314d00161333da.mockapi.io/posts";
+// const options = {
+
+// };
+
+// fetch(apiUrl)
+//     .then((response) => response.json())
+//     .then((result) => console.log(result));
+
+// const getCourse = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         try {
+//             resolve([1, 2, 3]);
+//         } catch (error) {
+//             reject(`Kết nối thất bại: ${error}`);
+//         }
+//     }, 1000);
+// });
+
+// getCourse
+//     .then((data) => console.log(data));
+
+// const showCourse = async () => {
+//     const data = await getCourse;
+//     console.log(data);
+// };
+
+// showCourse();

@@ -3,7 +3,7 @@ import AdminNewsList from "../../../components/admin/newsList";
 import AdminNewsSearch from "../../../components/admin/newsSearch";
 
 const AdminNewsPage = {
-    render() {
+    async render() {
         return /* html */ `
         <div class="min-h-full">
             ${AdminNav.render("news")}
@@ -31,7 +31,7 @@ const AdminNewsPage = {
                             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                        ${AdminNewsList.render()}
+                                        ${await AdminNewsList.render()}
                                     </div>
                                 </div>
                             </div>
@@ -43,13 +43,13 @@ const AdminNewsPage = {
         `;
     },
     afterRender() {
-        const btnRemove = document.querySelectorAll(".btn-remove");
-        btnRemove.forEach((btn) => {
-            const { id } = btn.dataset;
-            btn.addEventListener("click", (e) => {
-                e.target.closest("tr").remove();
-            });
-        });
+        // const btnRemove = document.querySelectorAll(".btn-remove");
+        // btnRemove.forEach((btn) => {
+        //     const { id } = btn.dataset;
+        //     btn.addEventListener("click", (e) => {
+        //         e.target.closest("tr").remove();
+        //     });
+        // });
     },
 };
 

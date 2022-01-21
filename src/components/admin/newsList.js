@@ -1,7 +1,8 @@
-import { postList } from "../../data";
+import { getAll } from "../../api/posts";
 
 const AdminNewsList = {
-    render() {
+    async render() {
+        const { data } = await getAll();
         return /* html */ `
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
@@ -21,7 +22,7 @@ const AdminNewsList = {
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                ${postList.map((post) => `
+                ${data.map((post) => `
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             ${post.id}
