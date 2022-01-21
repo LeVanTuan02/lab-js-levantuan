@@ -3,11 +3,12 @@ import Footer from "../../components/user/footer";
 import RelatedPostList from "../../components/user/relatedPost";
 import SidebarNews from "../../components/user/sidebarNews";
 import { postList, categoryList } from "../../data";
+import { get } from "../../api/posts";
 
 const DetailNewsPage = {
-    render(id) {
-        const result = postList.find((post) => post.id === id);
-        const createdAt = new Date(result.createdAt);
+    async render(id) {
+        const { data } = await get(id);
+        const createdAt = new Date(data.createdAt);
         const createdFormat = `${createdAt.getDate()}/${createdAt.getMonth() + 1}/${createdAt.getFullYear()}`;
 
         // thông tin danh mục

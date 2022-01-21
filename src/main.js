@@ -80,7 +80,7 @@ router.on({
     "/admin/news/:id/edit": ({ data }) => {
         changeTitle("Admin | Edit News");
         const { id } = data;
-        print(AdminNewsEditPage.render(+id));
+        print(AdminNewsEditPage, id);
     },
     "/admin/dashboard": () => {
         changeTitle("Admin | Dashboard");

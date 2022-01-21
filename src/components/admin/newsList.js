@@ -23,7 +23,7 @@ const AdminNewsList = {
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 ${data.map((post) => `
-                    <tr>
+                    <tr class="post-item-${post.id}">
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             ${post.id}
                         </td>

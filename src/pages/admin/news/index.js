@@ -1,3 +1,4 @@
+import { remove } from "../../../api/posts";
 import AdminNav from "../../../components/admin/nav";
 import AdminNewsList from "../../../components/admin/newsList";
 import AdminNewsSearch from "../../../components/admin/newsSearch";
@@ -43,13 +44,21 @@ const AdminNewsPage = {
         `;
     },
     afterRender() {
-        // const btnRemove = document.querySelectorAll(".btn-remove");
-        // btnRemove.forEach((btn) => {
-        //     const { id } = btn.dataset;
-        //     btn.addEventListener("click", (e) => {
-        //         e.target.closest("tr").remove();
-        //     });
-        // });
+        // xóa
+        const btnDeleteElements = document.querySelectorAll(".btn-remove");
+
+        btnDeleteElements.forEach((btn) => {
+            const { id } = btn.dataset;
+            btn.addEventListener("click", () => {
+                const isConfirmed = confirm("Bạn có chắc chắn muốn xóa bài viết này không?");
+
+                if (isConfirmed) {
+                    remove(id);
+                    alert("Đã xóa thành công");
+                    document.querySelector(`.post-item-${id}`).remove();
+                }
+            });
+        });
     },
 };
 

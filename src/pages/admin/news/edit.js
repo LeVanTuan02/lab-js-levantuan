@@ -1,9 +1,12 @@
+import { get, update } from "../../../api/posts";
 import AdminNav from "../../../components/admin/nav";
-import { categoryList, postList } from "../../../data";
+import { categoryList } from "../../../data";
 
 const AdminNewsEditPage = {
-    render(id) {
-        const postDetails = postList.find((post) => post.id === id);
+    async render(id) {
+        // const data = postList.find((post) => post.id === id);
+
+        const { data } = await get(id);
 
         return /* html */ `
         <div class="min-h-full">
@@ -26,18 +29,18 @@ const AdminNewsEditPage = {
             <main>
                 <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                     <div class="px-4 py-6 sm:px-0">
-                        <form action="#" method="POST">
+                        <form action="" method="POST" id="post__form-edit" data-id="${data.id}">
                             <div class="shadow overflow-hidden sm:rounded-md">
                                 <div class="px-4 py-5 bg-white sm:p-6">
                                     <div class="grid grid-cols-6 gap-6">
                                         <div class="col-span-6">
                                             <label for="title" class="block text-sm font-medium text-gray-700">Tiêu đề bài viết</label>
-                                            <input type="text" name="title" id="title" class="py-2 px-3 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Nhập tiêu đề bài viết" value="${postDetails.title}">
+                                            <input type="text" name="title" id="post__form-edit-title" class="py-2 px-3 mt-1 border focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Nhập tiêu đề bài viết" value="${data.title}">
                                         </div>
             
                                         <div class="col-span-6">
                                             <label for="description" class="block text-sm font-medium text-gray-700">Mô tả</label>
-                                            <textarea id="description" name="description" rows="3" class="py-2 px-3 focus:outline-none shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Nhập mô tả bài viết">${postDetails.description}</textarea>
+                                            <textarea id="post__form-edit-description" name="description" rows="3" class="py-2 px-3 focus:outline-none shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Nhập mô tả bài viết">${data.description}</textarea>
                                         </div>
             
                                         <div class="col-span-6 md:col-span-3">
@@ -45,7 +48,7 @@ const AdminNewsEditPage = {
                                             <select id="category" name="category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 <option value="">-- Chọn danh mục bài viết --</option>
                                                 ${categoryList.map((cate) => `
-                                                    <option value="${cate.id}" ${cate.id === postDetails.cate_id ? "selected" : ""} >${cate.name}</option>
+                                                    <option value="${cate.id}" ${cate.id === data.cate_id ? "selected" : ""} >${cate.name}</option>
                                                     `).join("")}
                                             </select>
                                         </div>
@@ -54,15 +57,15 @@ const AdminNewsEditPage = {
                                             <label for="status" class="block text-sm font-medium text-gray-700">Trạng thái</label>
                                             <select id="status" name="status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 <option value="">-- Chọn trạng thái bài viết --</option>
-                                                <option value="0" ${!postDetails.status ? "selected" : ""}>Ẩn</option>
-                                                <option value="1" ${postDetails.status ? "selected" : ""}>Hiển thị</option>
+                                                <option value="0" ${!data.status ? "selected" : ""}>Ẩn</option>
+                                                <option value="1" ${data.status ? "selected" : ""}>Hiển thị</option>
                                             </select>
                                         </div>
 
                                         <div class="col-span-3">
                                             <label class="block text-sm font-medium text-gray-700">Ảnh bìa hiện tại</label>
                                             <div class="mt-1">
-                                                <img src="${postDetails.image}" alt="" class="h-60 w-full object-cover rounded-md">
+                                                <img src="${data.image}" alt="" class="h-60 w-full object-cover rounded-md">
                                             </div>
                                         </div>
 
@@ -98,6 +101,21 @@ const AdminNewsEditPage = {
             </main>
         </div>
         `;
+    },
+    afterRender() {
+        const formEdit = document.querySelector("#post__form-edit");
+
+        formEdit.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const { id } = e.target.dataset;
+            const dataPost = {
+                title: document.querySelector("#post__form-edit-title").value,
+                description: document.querySelector("#post__form-edit-description").value,
+            };
+
+            update(id, dataPost);
+        });
     },
 };
 

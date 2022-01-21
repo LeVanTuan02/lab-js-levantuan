@@ -1,4 +1,4 @@
-import axios from "axios";
+import { add } from "../../../api/posts";
 import AdminNav from "../../../components/admin/nav";
 import { categoryList } from "../../../data";
 
@@ -97,19 +97,12 @@ const AdminNewsAddPage = {
             e.preventDefault();
             const post = {
                 title: document.querySelector("#post__form-title").value,
-                img: "http://placeimg.com/640/480/business",
-                desc: document.querySelector("#post__form-desc").value,
+                image: "http://placeimg.com/640/480/business",
+                description: document.querySelector("#post__form-desc").value,
             };
 
-            axios.post("http://localhost:3001/news", post);
-
-            // fetch("http://localhost:3001/news", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify(post),
-            // });
+            add(post);
+            formAdd.reset();
         });
     },
 };
