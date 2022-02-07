@@ -14,7 +14,7 @@ import AdminNewsAddPage from "./pages/admin/news/add";
 import AdminNewsEditPage from "./pages/admin/news/edit";
 import AdminDashboardPage from "./pages/admin/dashboard";
 
-const router = new Navigo("/", { linksSelector: "a" });
+const router = new Navigo("/", { linksSelector: "a", hash: true });
 
 const print = async (content, id) => {
     document.querySelector("#app").innerHTML = await content.render(id);
