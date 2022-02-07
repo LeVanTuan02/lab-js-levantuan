@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
 import { remove } from "../../../api/posts";
 import AdminNav from "../../../components/admin/nav";
 import AdminNewsList from "../../../components/admin/newsList";
@@ -50,13 +52,27 @@ const AdminNewsPage = {
         btnDeleteElements.forEach((btn) => {
             const { id } = btn.dataset;
             btn.addEventListener("click", () => {
-                const isConfirmed = confirm("Bạn có chắc chắn muốn xóa bài viết này không?");
-
-                if (isConfirmed) {
-                    remove(id);
-                    alert("Đã xóa thành công");
-                    document.querySelector(`.post-item-${id}`).remove();
-                }
+                Swal.fire({
+                    title: "Bạn có chắc chắn muốn xóa bài viết này không?",
+                    text: "Sau khi xóa, bạn không thể hoàn tác!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        remove(id)
+                            .then(() => {
+                                Swal.fire(
+                                    "Thành công!",
+                                    "Bài viết đã bị xóa.",
+                                    "success",
+                                );
+                            })
+                            .then(() => document.querySelector(`.post-item-${id}`).remove());
+                    }
+                });
             });
         });
     },

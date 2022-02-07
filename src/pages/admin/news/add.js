@@ -1,4 +1,5 @@
 import axios from "axios";
+import toastr from "toastr";
 import { add } from "../../../api/posts";
 import AdminNav from "../../../components/admin/nav";
 import { categoryList } from "../../../data";
@@ -136,11 +137,11 @@ const AdminNewsAddPage = {
 
                         add(post)
                             .then(() => formAdd.reset())
-                            .then(() => { window.location.href = "/#/admin/news"; });
+                            .then(() => toastr.success("Thêm bài viết thành công"));
                     })
                     .catch((error) => console.log(error));
             } else {
-                alert("Vui lòng chọn ảnh");
+                toastr.info("Vui lòng chọn ảnh");
             }
         });
     },

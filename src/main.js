@@ -1,4 +1,5 @@
 import Navigo from "navigo";
+import "toastr/build/toastr.css";
 import NotFound from "./pages/user/notFound";
 import HomePage from "./pages/user/home";
 import TuyenSinhPage from "./pages/user/tuyenSinh";

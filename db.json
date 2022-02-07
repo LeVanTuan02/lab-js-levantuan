@@ -3,7 +3,7 @@
     {
       "createdAt": "2022-01-15T01:54:24.955Z",
       "title": "Tiffany Wisoky",
-      "image": "http://placeimg.com/640/480/cats",
+      "image": "https://res.cloudinary.com/levantuan/image/upload/v1644228198/assignment-js/tpzclnlpdwz6b49lqbnj.jpg",
       "description": "update Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
       "id": 8
     },
@@ -23,23 +23,10 @@
     },
     {
       "createdAt": "2022-01-14T17:58:26.446Z",
-      "title": "Vickie Jast",
+      "title": "Vickie Jast edit",
       "image": "http://placeimg.com/640/480/technics",
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals nek\n",
       "id": 11
-    },
-    {
-      "title": "a",
-      "image": "http://placeimg.com/640/480/business",
-      "description": "ab",
-      "id": 12
-    },
-    {
-      "title": "a",
-      "image": "https://res.cloudinary.com/levantuan/image/upload/v1644209154/assignment-js/gqczaeim5lujmm5n8c2t.jpg",
-      "description": "a",
-      "createdAt": "2022-02-07T04:45:54.262Z",
-      "id": 13
     }
   ]
 }
