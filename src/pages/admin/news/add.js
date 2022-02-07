@@ -1,3 +1,4 @@
+import axios from "axios";
 import { add } from "../../../api/posts";
 import AdminNav from "../../../components/admin/nav";
 import { categoryList } from "../../../data";
@@ -66,14 +67,21 @@ const AdminNewsAddPage = {
                                                         <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                                     </svg>
                                                     <div class="flex text-sm text-gray-600">
-                                                        <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                        <label for="post__form-img" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                                             <span>Upload a file</span>
-                                                            <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                                            <input id="post__form-img" name="post__form-img" accept="image/*" type="file" class="sr-only">
                                                         </label>
                                                         <p class="pl-1">or drag and drop</p>
                                                     </div>
                                                     <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                                                 </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-span-3">
+                                            <label class="block text-sm font-medium text-gray-700">Ảnh bìa hiện tại</label>
+                                            <div class="mt-1">
+                                                <img src="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=" alt="" id="form__add-img-preview" class="h-60 w-full object-cover rounded-md">
                                             </div>
                                         </div>
                                     </div>
@@ -93,16 +101,47 @@ const AdminNewsAddPage = {
     },
     afterRender() {
         const formAdd = document.querySelector("#post__form-add");
+        const imgPost = document.querySelector("#post__form-img");
+        const imgPreview = document.querySelector("#form__add-img-preview");
+
+        imgPost.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            imgPreview.src = URL.createObjectURL(file);
+        });
+
         formAdd.addEventListener("submit", (e) => {
             e.preventDefault();
-            const post = {
-                title: document.querySelector("#post__form-title").value,
-                image: "http://placeimg.com/640/480/business",
-                description: document.querySelector("#post__form-desc").value,
-            };
 
-            add(post);
-            formAdd.reset();
+            if (imgPost.files && imgPost.files.length) {
+                const formData = new FormData();
+                formData.append("file", imgPost.files[0]);
+                formData.append("upload_preset", "u6e4fyfm");
+
+                axios({
+                    url: "https://api.cloudinary.com/v1_1/levantuan/image/upload",
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-endcoded",
+                    },
+                    data: formData,
+                })
+                    .then((res) => {
+                        const date = new Date();
+                        const post = {
+                            title: document.querySelector("#post__form-title").value,
+                            image: res.data.secure_url,
+                            description: document.querySelector("#post__form-desc").value,
+                            createdAt: date.toISOString(),
+                        };
+
+                        add(post)
+                            .then(() => formAdd.reset())
+                            .then(() => { window.location.href = "/#/admin/news"; });
+                    })
+                    .catch((error) => console.log(error));
+            } else {
+                alert("Vui lòng chọn ảnh");
+            }
         });
     },
 };
