@@ -1,3 +1,5 @@
+import $ from "jquery";
+import "slick-carousel";
 import Header from "../../components/user/header";
 import Footer from "../../components/user/footer";
 import Banner from "../../components/user/banner";
@@ -34,6 +36,11 @@ const HomePage = {
         
         ${Footer.render()}
         `;
+    },
+    afterRender() {
+        $("#banner").slick({
+            arrows: false,
+        });
     },
 };
 
