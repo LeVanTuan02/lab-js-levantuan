@@ -18,7 +18,7 @@ const AdminNewsEditPage = {
                     Cập nhật bài viết
                     </h1>
 
-                    <a href="/admin/news">
+                    <a href="/#/admin/news">
                         <button type="button" class="h-9 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Danh sách
                         </button>
