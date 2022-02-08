@@ -1,32 +1,20 @@
 {
   "news": [
     {
-      "createdAt": "2022-01-15T01:54:24.955Z",
-      "title": "Tiffany Wisoky",
-      "image": "https://res.cloudinary.com/levantuan/image/upload/v1644228198/assignment-js/tpzclnlpdwz6b49lqbnj.jpg",
-      "description": "update Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-      "id": 8
+      "title": "b",
+      "image": "https://res.cloudinary.com/levantuan/image/upload/v1644328374/lab-js/thtnhqh6rtefhrlvfmqm.jpg",
+      "description": "b",
+      "status": 0,
+      "createdAt": "2022-02-08T13:52:55.111Z",
+      "id": 13
     },
     {
-      "createdAt": "2022-01-15T02:36:13.715Z",
-      "title": "Mr. Doug Purdy",
-      "image": "http://placeimg.com/640/480/nature",
-      "description": "The Football Is Good For Training And Recreational Purposes",
-      "id": 9
-    },
-    {
-      "createdAt": "2022-01-14T12:38:27.738Z",
-      "title": "bài viết này được đổi",
-      "image": "http://placeimg.com/640/480/nature",
-      "description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-      "id": 10
-    },
-    {
-      "createdAt": "2022-01-14T17:58:26.446Z",
-      "title": "Vickie Jast edit",
-      "image": "http://placeimg.com/640/480/technics",
-      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals nek\n",
-      "id": 11
+      "title": "ẩn",
+      "image": "https://res.cloudinary.com/levantuan/image/upload/v1644328404/lab-js/vbikhiv0gjrnmyenhmny.jpg",
+      "description": "a",
+      "status": 1,
+      "createdAt": "2022-02-08T13:53:24.924Z",
+      "id": 14
     }
   ]
 }

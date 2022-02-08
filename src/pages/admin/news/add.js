@@ -1,5 +1,6 @@
 import axios from "axios";
 import toastr from "toastr";
+import reRender from "../../../utils";
 import { add } from "../../../api/posts";
 import AdminNav from "../../../components/admin/nav";
 import { categoryList } from "../../../data";
@@ -52,8 +53,8 @@ const AdminNewsAddPage = {
                                         </div>
             
                                         <div class="col-span-6 md:col-span-3">
-                                            <label for="status" class="block text-sm font-medium text-gray-700">Trạng thái</label>
-                                            <select id="status" name="status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <label for="post__form-stt" class="block text-sm font-medium text-gray-700">Trạng thái</label>
+                                            <select id="post__form-stt" name="post__form-stt" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                 <option value="">-- Chọn trạng thái bài viết --</option>
                                                 <option value="0" selected>Ẩn</option>
                                                 <option value="1">Hiển thị</option>
@@ -104,42 +105,43 @@ const AdminNewsAddPage = {
         const formAdd = document.querySelector("#post__form-add");
         const imgPost = document.querySelector("#post__form-img");
         const imgPreview = document.querySelector("#form__add-img-preview");
+        const sttPost = document.querySelector("#post__form-stt");
+
+        const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/levantuan/image/upload";
+        const CLOUDINARY_PRESET = "gqjiq1dp";
 
         imgPost.addEventListener("change", (e) => {
             const file = e.target.files[0];
             imgPreview.src = URL.createObjectURL(file);
         });
 
-        formAdd.addEventListener("submit", (e) => {
+        formAdd.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            if (imgPost.files && imgPost.files.length) {
+            if (imgPost.files.length) {
                 const formData = new FormData();
                 formData.append("file", imgPost.files[0]);
-                formData.append("upload_preset", "u6e4fyfm");
+                formData.append("upload_preset", CLOUDINARY_PRESET);
 
-                axios({
-                    url: "https://api.cloudinary.com/v1_1/levantuan/image/upload",
-                    method: "POST",
+                // upload ảnh
+                const res = await axios.post(CLOUDINARY_API, formData, {
                     headers: {
                         "Content-Type": "application/x-www-form-endcoded",
                     },
-                    data: formData,
-                })
-                    .then((res) => {
-                        const date = new Date();
-                        const post = {
-                            title: document.querySelector("#post__form-title").value,
-                            image: res.data.secure_url,
-                            description: document.querySelector("#post__form-desc").value,
-                            createdAt: date.toISOString(),
-                        };
+                });
 
-                        add(post)
-                            .then(() => formAdd.reset())
-                            .then(() => toastr.success("Thêm bài viết thành công"));
-                    })
-                    .catch((error) => console.log(error));
+                const date = new Date();
+                const post = {
+                    title: document.querySelector("#post__form-title").value,
+                    image: res.data.secure_url,
+                    description: document.querySelector("#post__form-desc").value,
+                    status: +sttPost.value,
+                    createdAt: date.toISOString(),
+                };
+
+                add(post)
+                    .then(() => toastr.success("Thêm bài viết thành công"))
+                    .then(() => reRender(AdminNewsAddPage, "#app"));
             } else {
                 toastr.info("Vui lòng chọn ảnh");
             }

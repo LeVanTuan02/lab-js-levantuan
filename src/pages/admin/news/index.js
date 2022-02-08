@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.css";
+import reRender from "../../../utils";
 import { remove } from "../../../api/posts";
 import AdminNav from "../../../components/admin/nav";
 import AdminNewsList from "../../../components/admin/newsList";
@@ -70,7 +71,7 @@ const AdminNewsPage = {
                                     "success",
                                 );
                             })
-                            .then(() => document.querySelector(`.post-item-${id}`).remove());
+                            .then(() => reRender(AdminNewsPage, "#app"));
                     }
                 });
             });
