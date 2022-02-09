@@ -1,5 +1,6 @@
 import Header from "../../components/user/header";
 import Footer from "../../components/user/footer";
+import { signin } from "../../api/user";
 
 const SigninPage = {
     render() {
@@ -21,16 +22,16 @@ const SigninPage = {
                             </a>
                         </p>
                     </div>
-                    <form class="mt-8 space-y-6" action="#" method="POST">
+                    <form class="mt-8 space-y-6" action="" method="POST" id="form__signin">
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="email-address" class="sr-only">Nhập email</label>
-                                <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Nhập email">
+                                <label for="form__signin-email" class="sr-only">Nhập email</label>
+                                <input id="form__signin-email" name="email" type="email" autocomplete="email" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Nhập email">
                             </div>
                             <div>
-                                <label for="password" class="sr-only">Mật khẩu</label>
-                                <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Mật khẩu">
+                                <label for="form__signin-password" class="sr-only">Mật khẩu</label>
+                                <input id="form__signin-password" name="form__signin-password" type="password" autocomplete="current-password" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Mật khẩu">
                             </div>
                         </div>
                     
@@ -67,6 +68,22 @@ const SigninPage = {
         
         ${Footer.render()}
         `;
+    },
+    afterRender() {
+        const formSignin = document.querySelector("#form__signin");
+        const email = formSignin.querySelector("#form__signin-email");
+        const password = formSignin.querySelector("#form__signin-password");
+
+        formSignin.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const res = await signin({
+                email: email.value,
+                password: password.value,
+            });
+
+            console.log(res);
+        });
     },
 };
 

@@ -16,5 +16,15 @@
       "createdAt": "2022-02-08T13:53:24.924Z",
       "id": 14
     }
+  ],
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$IuReNMavBJ7Xw4cXhm12IOWtANyWlMpw3nkmhRqHTgvG/WkmOB5Vm",
+      "username": "admin",
+      "fullName": "Lê Văn Tuân",
+      "phone": "0345632563",
+      "id": 1
+    }
   ]
 }
