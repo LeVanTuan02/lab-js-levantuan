@@ -3,7 +3,7 @@
     {
       "title": "b",
       "image": "https://res.cloudinary.com/levantuan/image/upload/v1644328374/lab-js/thtnhqh6rtefhrlvfmqm.jpg",
-      "description": "b",
+      "description": "bas",
       "status": 0,
       "createdAt": "2022-02-08T13:52:55.111Z",
       "id": 13
@@ -12,7 +12,7 @@
       "title": "ẩn",
       "image": "https://res.cloudinary.com/levantuan/image/upload/v1644328404/lab-js/vbikhiv0gjrnmyenhmny.jpg",
       "description": "a",
-      "status": 1,
+      "status": 0,
       "createdAt": "2022-02-08T13:53:24.924Z",
       "id": 14
     }

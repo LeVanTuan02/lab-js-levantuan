@@ -77,12 +77,20 @@ const SigninPage = {
         formSignin.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const res = await signin({
+            const { data } = await signin({
                 email: email.value,
                 password: password.value,
             });
 
-            console.log(res);
+            // lưu data
+            localStorage.setItem("user", JSON.stringify(data.user));
+
+            // check quyền
+            if (data.user.id === 1) {
+                window.location.href = "/#/admin/dashboard";
+            } else {
+                window.location.href = "/#/";
+            }
         });
     },
 };

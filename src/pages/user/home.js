@@ -38,8 +38,12 @@ const HomePage = {
         `;
     },
     afterRender() {
+        Header.afterRender();
+
+        // slider
         $("#banner").slick({
             arrows: false,
+            autoplay: true,
         });
     },
 };

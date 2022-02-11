@@ -15,8 +15,15 @@ const Nav = {
                 <li>
                     <a href="/#/signin" class="block p-3 text-white transition hover:underline">Đăng nhập</a>
                 </li>
+                <li>
+                    <a href="/#/signin" id="nav__user" class="block p-3 text-white transition hover:underline">Đăng nhập</a>
+                </li>
         </ul>
         `;
+    },
+    afterRender() {
+        const user = JSON.parse(localStorage.getItem("user"));
+        document.querySelector("#nav__user").innerHTML = user.fullName;
     },
 };
 
