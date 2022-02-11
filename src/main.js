@@ -27,6 +27,18 @@ const changeTitle = (title) => {
     document.title = title;
 };
 
+router.on("/admin/*", () => {}, {
+    before(done) {
+        const userId = JSON.parse(localStorage.getItem("user")).id;
+
+        if (userId === 1) {
+            done();
+        } else {
+            document.location.href = "/#/";
+        }
+    },
+});
+
 router.on({
     "/": () => {
         changeTitle("Cao đẳng thực hành FPT Polytechnic");

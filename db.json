@@ -25,6 +25,14 @@
       "fullName": "Lê Văn Tuân",
       "phone": "0345632563",
       "id": 1
+    },
+    {
+      "email": "user@gmail.com",
+      "password": "$2a$10$aPfbL/A732cu7490UvSYGuSYWgyk/Q5eK..e4G5RJqNuEJcXJypeK",
+      "username": "user",
+      "fullName": "User",
+      "phone": "0347856985",
+      "id": 2
     }
   ]
 }
